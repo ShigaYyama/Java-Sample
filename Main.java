@@ -3,42 +3,51 @@ package kadai6to2;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-
-//		Computerクラスのインスタンスを生成
 		Computer com = new Computer();
+		User user = new User();
 		
-//		開始コメントはコンストラクタ内で処理
-		com.StartComment();
-
+		startComment();
+		
 		while (true) {
-			@SuppressWarnings("resource")
-			int num = new java.util.Scanner(System.in).nextInt();
-			int ran = new java.util.Random().nextInt(3);
-
-			System.out.println("最初はグー、じゃんけん");
-			System.out.println("ポン！");
-
-//			ランダムの数字と入力した数字の差異で勝敗を判別
-//			メソッドの引数で配列の数値を照合させる
-			if (num == ran) {
-				com.Draw(num, ran);
+			
+			int num = user.Action();
+			int ran = com.Action();
+	
+			System.out.println("あなた：" + user.Hand(num)+ " コンピューター：" + com.Hand(ran));
+			
+			battle(num,ran);
+			if(num == ran) {
 				continue;
-
-			} else if (num - ran == -1 || num - ran == 2) {
-				com.Win(num, ran);
-				break;
-
-			} else if (num - ran == 1 || num - ran == -2) {
-				com.Lose(num, ran);
-				break;
-
-			} else {
-				System.out.println("正しい値が入力されませんでした。システムを終了します。");
-				break;
 			}
-
+			break;
 		}
+	}
+		
+	public static void startComment() {
+		System.out.println("じゃんけんを開始します。");
+		System.out.println("あなたの手を選んでください。 ");
+		System.out.println("0:グー");
+		System.out.println("1:チョキ");
+		System.out.println("2:パー");	
+		System.out.println("最初はグー、じゃんけん");
+		System.out.println("ポン！");
+	}
 
+	public static void battle(int userHand, int comHand) {
+		
+		if (userHand == 0 || userHand == 1 || userHand == 2) {
+			if (userHand == comHand) {
+				System.out.println("惜しい！あいこです！じゃんけんを続けます。");
+				
+			} else if (userHand - comHand == -1 || userHand - comHand == 2) {
+				System.out.println("あなたの勝ちです！おめでとうございます！");
+				
+			} else if (userHand - comHand == 1 || userHand - comHand == -2) {
+				System.out.println("残念！あなたの負けです！じゃんけんを終了します。");
+			}
+		} else {
+			System.out.println("正しい値が入力されませんでした。システムを終了します。");
+		}
 	}
 
 }

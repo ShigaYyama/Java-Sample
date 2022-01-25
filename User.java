@@ -2,28 +2,28 @@ package kadai6to2;
 
 public class User {
 	String name;
-
+	
+	String[] hand = { "グー", "チョキ", "パー" };
+	
 	public User() {
 	}
-
-//	public void Template() throws InterruptedException {
-//		System.out.println("ポン！");
-//		System.out.println("あなた：" + this.name + " コンピューター：チョキ");
-//		Thread.sleep(2000);
-//	}
-
-	public void Win() throws InterruptedException {
-//		Template();
-		System.out.println("あなたの勝ちです！おめでとうございます！");
+	
+	public int Action() {
+		@SuppressWarnings("resource") 
+		int num = new java.util.Scanner(System.in).nextInt();
+		return num;
+	}
+	
+	public String Hand(int handNum) {
+		switch (handNum){
+			case 0:
+				return hand[0];
+			case 1:
+				return hand[1];
+			case 2:
+				return hand[2];
+		}
+		return name;
 	}
 
-	public void Draw() throws InterruptedException {
-//		Template();
-		System.out.println("惜しい！あいこです！じゃんけんを続けます。");
-	}
-
-	public void Lose() throws InterruptedException {
-//		Template();
-		System.out.println("残念！あなたの負けです！じゃんけんを終了します。");
-	}
 }
