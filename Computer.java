@@ -3,8 +3,6 @@ package kadai6to2;
 public class Computer {
 	String comHand;
 	
-	public Computer() {
-	}
 	
 	public int Action() {
 		int ran = new java.util.Random().nextInt(3);
