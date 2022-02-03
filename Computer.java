@@ -1,9 +1,7 @@
 package kadai6to2;
 
 public class Computer {
-	String name;
-
-	String[] hand = { "グー", "チョキ", "パー" };
+	String comHand;
 	
 	public Computer() {
 	}
@@ -13,16 +11,20 @@ public class Computer {
 		return ran;
 	}
 	
-	public String Hand(int handNum) {		
+	public String Hand(int handNum) {
+		String[] hand = { "グー", "チョキ", "パー" };	
 		switch (handNum){
 			case 0:
-				return hand[0];
+				comHand = hand[0];
+				break;
 			case 1:
-				return hand[1];
+				comHand = hand[1];
+				break;
 			case 2:
-				return hand[2];
+				comHand = hand[2];
+				break;
 		}
-		return name;
+		return comHand;
 	}
 
 
